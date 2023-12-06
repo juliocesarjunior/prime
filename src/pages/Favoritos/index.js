@@ -1,7 +1,12 @@
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import api from '../../services/api';
+import './favoritos.css'
+
 function Favoritos() {
     return (
-      <div>
-        <h1>Favoritos</h1>
+      <div className="">
+        
       </div>
     );
   }
