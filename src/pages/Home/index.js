@@ -21,7 +21,7 @@ function Home() {
                 }
             })
             //console.log(response.data.results.slice(0, 10))
-            setFilme(response.data.results.slice(0, 10));
+            setFilme(response.data.results.slice(0, 10));//Quantidade de filmes na pagina inicial
             setLoading(false);
         }
         loadFilmes();

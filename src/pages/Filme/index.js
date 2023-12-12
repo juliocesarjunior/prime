@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import './filme.css'
+import { toast } from 'react-toastify';
 
 
 function Filme() {
@@ -25,7 +26,7 @@ function Filme() {
           setLoading(false);
         })
         .catch(() => {
-          navigate("/", { replace:  true })
+          navigate("/", { replace: true })
           return;
         })
     }
@@ -36,20 +37,23 @@ function Filme() {
     }
   }, [navigate, id])
 
-  function salvarFilme(){
+  function salvarFilme() {
     const minhaLista = localStorage.getItem("@primeflix");
 
     let filmesSalvos = JSON.parse(minhaLista) || [];
 
-    const hasFilme = filmesSalvos.some((filmesSalvos)=> filmesSalvos.id === filme.id)
+    const hasFilme = filmesSalvos.some((filmesSalvos) => filmesSalvos.id === filme.id)
 
-    if(hasFilme){
-      alert("ESSE FILME JÀ ESTA NA LISTA")
+    if (hasFilme) {
+      // alert("ESSE FILME JÀ ESTA NA LISTA")
+      toast.warning("ESSE FILME JÀ ESTA NA LISTA")
+
       return;
     }
     filmesSalvos.push(filme);
     localStorage.setItem("@primeflix", JSON.stringify(filmesSalvos));
-    alert("FILME SALVO COM SUCESSO!")
+    //alert("FILME SALVO COM SUCESSO!")
+    toast.success("FILME SALVO COM SUCESSO!")
   }
 
   if (loading) {
